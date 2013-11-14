@@ -1,6 +1,11 @@
 package org.pshow.ecm.content.model.definition;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("constraint")
 public class ConstraintModel {
+	@XStreamAsAttribute
 	public String name;
 	public String title;
 	public String description;

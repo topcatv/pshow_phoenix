@@ -66,7 +66,24 @@
 	<!-- JSR303 Validator定义 -->
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
+	
+	<bean id="auditPostProcessor" class="org.pshow.ecm.security.MethodAuditPostProcessor" />
+	
+	<bean class="org.pshow.ecm.utils.NewOrderMethodValidationPostProcessor"
+		depends-on="auditPostProcessor">
+		<property name="validator" ref="validator" />
+	</bean>
+	
+	<bean id="bootstrap" class="org.pshow.ecm.content.metadata.Bootstrap"
+		init-method="onBootstrap" lazy-init="false">
+		<property name="csh" ref="contentSchemaHolder" />
+		<property name="xml_resources">
+			<list>
+				<value>classpath:datatype.xml</value>
+				<value>classpath:system.xml</value>
+			</list>
+		</property>
+	</bean>
 	<!-- production环境 -->
 	<beans profile="production">
 		<context:property-placeholder

@@ -2,10 +2,14 @@ package org.pshow.ecm.content.model.definition;
 
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 public class ClassModel {
+	@XStreamAsAttribute
 	public String name;
 	public String title;
 	public String description;
+	@XStreamAsAttribute
 	public String parent;
 	public List<PropertyModel> properties;
 

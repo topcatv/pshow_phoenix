@@ -19,7 +19,7 @@ public interface ContentService {
 	public void addProperty(String contentId, String name, PropertyValue value);
 	public void removeProperty(String contentId, String name);
 	public Type getType(String contentId);
-	public Collection getFacets(String contentId);
+	public List getFacets(String contentId);
 	public List getChild(String contentId);
 	public String createContent(QName type, String parentId, String name);
 	public String createContent(QName type, String parentId, String name, Map properties);

@@ -2,12 +2,12 @@ package org.pshow.ecm.content.metadata;
 
 import java.util.List;
 
-import org.pshow.ecm.content.model.Constraint;
-import org.pshow.ecm.content.model.Facet;
 import org.pshow.ecm.content.model.QName;
-import org.pshow.ecm.content.model.Type;
+import org.pshow.ecm.content.model.definition.ConstraintModel;
+import org.pshow.ecm.content.model.definition.FacetModel;
 import org.pshow.ecm.content.model.definition.PSModel;
 import org.pshow.ecm.content.model.definition.PSNamespace;
+import org.pshow.ecm.content.model.definition.TypeModel;
 
 
 public interface ContentSchemaHolder {
@@ -20,12 +20,12 @@ public interface ContentSchemaHolder {
 	public PSNamespace getNamespaceByPrefix(String prefix);
 	public List<PSNamespace> getAllNamespace();
 	public boolean hasContentType(QName name);
-	public Type getContentType(QName name);
-	public List<Type> getAllContentType();
+	public TypeModel getContentType(QName name);
+	public List<TypeModel> getAllContentType();
 	public boolean hasFacet(QName name);
-	public Facet getFacet(QName name);
-	public List<Facet> getAllFacet();
+	public FacetModel getFacet(QName name);
+	public List<FacetModel> getAllFacet();
 	public boolean hasConstraint(QName name);
-	public Constraint getConstraint(QName name);
-	public List<Constraint> getAllConstraint();
+	public ConstraintModel getConstraint(QName name);
+	public List<ConstraintModel> getAllConstraint();
 }

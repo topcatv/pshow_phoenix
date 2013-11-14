@@ -1,12 +1,23 @@
 package org.pshow.ecm.content.model.definition;
 
+import java.util.List;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("property")
 public class PropertyModel {
+	@XStreamAsAttribute
 	public String name;
 	public String title;
-	public DataType dataType;
-	public ConstraintModel constraint;
+	@XStreamAlias("type")
+	public String dataTypeName;
+	public List<String> constraints;
+	@XStreamAsAttribute
 	public boolean indexed;
+	@XStreamAsAttribute
 	public boolean multipled;
+	@XStreamAsAttribute
 	public boolean mandatory;
 
 	public String getName() {
@@ -23,22 +34,6 @@ public class PropertyModel {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public DataType getDataType() {
-		return dataType;
-	}
-
-	public void setDataType(DataType dataType) {
-		this.dataType = dataType;
-	}
-
-	public ConstraintModel getConstraint() {
-		return constraint;
-	}
-
-	public void setConstraint(ConstraintModel constraint) {
-		this.constraint = constraint;
 	}
 
 	public boolean isIndexed() {
@@ -63,5 +58,21 @@ public class PropertyModel {
 
 	public void setMandatory(boolean mandatory) {
 		this.mandatory = mandatory;
+	}
+
+	public String getDataTypeName() {
+		return dataTypeName;
+	}
+
+	public void setDataTypeName(String dataTypeName) {
+		this.dataTypeName = dataTypeName;
+	}
+
+	public List<String> getConstraints() {
+		return constraints;
+	}
+
+	public void setConstraints(List<String> constraints) {
+		this.constraints = constraints;
 	}
 }
