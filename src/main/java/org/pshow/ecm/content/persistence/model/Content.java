@@ -1,8 +1,10 @@
 package org.pshow.ecm.content.persistence.model;
 
-import java.util.Map;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -10,15 +12,16 @@ import org.pshow.ecm.entity.IdEntity;
 
 @Entity
 @Table(name = "ps_content")
-public class PContent extends IdEntity {
+public class Content extends IdEntity {
 	private String uuid;
 	private String name;
 	private boolean checkouted;
 	private boolean folder;
-	private PPath path;
-	private Map<String, PProperty> properties;
 	private boolean versioned;
-	private PVersionHistory versionHistory;
+	
+	private List<Property> properties;
+	
+	private VersionHistory versionHistory;
 
 	@NotBlank
 	public String getUuid() {
@@ -54,19 +57,12 @@ public class PContent extends IdEntity {
 		this.folder = folder;
 	}
 
-	public PPath getPath() {
-		return path;
-	}
-
-	public void setPath(PPath path) {
-		this.path = path;
-	}
-
-	public Map<String, PProperty> getProperties() {
+	@OneToMany(mappedBy = "id")
+	public List<Property> getProperties() {
 		return properties;
 	}
 
-	public void setProperties(Map<String, PProperty> properties) {
+	public void setProperties(List<Property> properties) {
 		this.properties = properties;
 	}
 
@@ -78,11 +74,12 @@ public class PContent extends IdEntity {
 		this.versioned = versioned;
 	}
 
-	public PVersionHistory getVersionHistory() {
+	@OneToOne
+	public VersionHistory getVersionHistory() {
 		return versionHistory;
 	}
 
-	public void setVersionHistory(PVersionHistory versionHistory) {
+	public void setVersionHistory(VersionHistory versionHistory) {
 		this.versionHistory = versionHistory;
 	}
 }

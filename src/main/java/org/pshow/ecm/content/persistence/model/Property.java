@@ -13,8 +13,8 @@ import org.pshow.ecm.entity.IdEntity;
 
 @Entity
 @Table(name = "ps_property")
-public class PProperty extends IdEntity {
-	private PContent content;
+public class Property extends IdEntity {
+	private Content content;
 	private String name;
 	private int intValue;
 	private long longValue;
@@ -27,11 +27,11 @@ public class PProperty extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "content_id")
-	public PContent getContent() {
+	public Content getContent() {
 		return content;
 	}
 
-	public void setContent(PContent content) {
+	public void setContent(Content content) {
 		this.content = content;
 	}
 

@@ -1,6 +1,7 @@
 package org.pshow.ecm.content.persistence.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -8,10 +9,9 @@ import org.pshow.ecm.entity.IdEntity;
 
 @Entity
 @Table(name = "ps_version")
-public class PVersion extends IdEntity {
+public class Version extends IdEntity {
 	private String label;
 	private String comments;
-	private PContent content;
 	private int index;
 
 	@NotBlank
@@ -29,14 +29,6 @@ public class PVersion extends IdEntity {
 
 	public void setComments(String comments) {
 		this.comments = comments;
-	}
-
-	public PContent getContent() {
-		return content;
-	}
-
-	public void setContent(PContent content) {
-		this.content = content;
 	}
 
 	public int getIndex() {
