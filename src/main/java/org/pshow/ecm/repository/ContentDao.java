@@ -16,13 +16,15 @@
  */
 package org.pshow.ecm.repository;
 
-import org.pshow.ecm.content.persistence.model.NamespaceModel;
+import org.pshow.ecm.content.persistence.model.ContentModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author topcat
  *
  */
-public interface NamespaceDao extends JpaRepository<NamespaceModel, Long>{
+public interface ContentDao extends JpaRepository<ContentModel, Long>{
+
+	public ContentModel findByUuid(String contentId);
 
 }

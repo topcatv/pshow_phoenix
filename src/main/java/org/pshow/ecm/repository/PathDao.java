@@ -16,13 +16,13 @@
  */
 package org.pshow.ecm.repository;
 
-import org.pshow.ecm.content.persistence.model.NamespaceModel;
+import org.pshow.ecm.content.persistence.model.Path;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author topcat
  *
  */
-public interface NamespaceDao extends JpaRepository<NamespaceModel, Long>{
+public interface PathDao extends JpaRepository<Path, Long> {
 
 }

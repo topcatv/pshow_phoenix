@@ -14,15 +14,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.pshow.ecm.repository;
+package org.pshow.ecm.content.persistence.model;
 
-import org.pshow.ecm.content.persistence.model.NamespaceModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.pshow.ecm.entity.IdEntity;
 
 /**
  * @author topcat
- *
+ * 
  */
-public interface NamespaceDao extends JpaRepository<NamespaceModel, Long>{
+@Entity
+@Table(name = "ps_workspace")
+public class WorkspaceModel extends IdEntity {
+
+	private String name;
+	private String root;
+	
+	public WorkspaceModel(){
+		
+	}
+
+	public WorkspaceModel(String name) {
+		this.name = name;
+	}
+
+	@NotBlank
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRoot() {
+		return root;
+	}
+
+	public void setRoot(String root) {
+		this.root = root;
+	}
 
 }

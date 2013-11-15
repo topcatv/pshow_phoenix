@@ -1,8 +1,8 @@
 package org.pshow.ecm.content.model;
 
-import java.util.Collection;
 import java.util.Date;
-
+import java.util.List;
+import java.util.Map;
 
 public interface Content {
 	public String getName();
@@ -15,14 +15,14 @@ public interface Content {
 	public void setDescription(String desc);
 	public PropertyValue getProperty();
 	public Type getType();
-	public Collection getFacets();
+	public List<Facet> getFacets();
 	public boolean isFolder();
-	public Collection getProperties();
+	public Map<String, PropertyValue> getProperties();
 	public void addProperty(String name, PropertyValue property);
-	public void addProperties(Collection properties);
+	public void addProperties(Map<String, PropertyValue> properties);
 	public void removeProperty(String name);
 	public String getId();
-	public Collection getChilder();
+	public List<Content> getChilder();
 	public void addContent(Content content);
 	public void removeContent(Content content);
 	public void moveTo(Content content);

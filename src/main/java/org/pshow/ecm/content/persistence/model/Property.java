@@ -7,14 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.pshow.ecm.content.model.definition.DataType.Type;
 import org.pshow.ecm.entity.IdEntity;
 
 @Entity
 @Table(name = "ps_property")
 public class Property extends IdEntity {
-	private Content content;
+	private ContentModel content;
+	private int actualType;
 	private String name;
 	private int intValue;
 	private long longValue;
@@ -27,11 +30,11 @@ public class Property extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "content_id")
-	public Content getContent() {
+	public ContentModel getContent() {
 		return content;
 	}
 
-	public void setContent(Content content) {
+	public void setContent(ContentModel content) {
 		this.content = content;
 	}
 
@@ -106,5 +109,13 @@ public class Property extends IdEntity {
 
 	public void setObjectValue(Serializable objectValue) {
 		this.objectValue = objectValue;
+	}
+
+	public int getActualType() {
+		return actualType;
+	}
+
+	public void setActualType(int actualType) {
+		this.actualType = actualType;
 	}
 }

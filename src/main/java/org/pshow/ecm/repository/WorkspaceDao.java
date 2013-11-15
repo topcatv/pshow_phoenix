@@ -16,13 +16,20 @@
  */
 package org.pshow.ecm.repository;
 
-import org.pshow.ecm.content.persistence.model.NamespaceModel;
+import org.pshow.ecm.content.persistence.model.WorkspaceModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  * @author topcat
  *
  */
-public interface NamespaceDao extends JpaRepository<NamespaceModel, Long>{
+public interface WorkspaceDao extends JpaRepository<WorkspaceModel, Long>{
+
+	public WorkspaceModel findByName(String workspace);
+
+	@Query("select count(*) from WorkspaceModel as ws where ws.name = :name")
+	public int countByName(@Param("name") String workspace);
 
 }

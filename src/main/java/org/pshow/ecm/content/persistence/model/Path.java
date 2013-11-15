@@ -26,7 +26,7 @@ public class Path extends IdEntity {
 	
 	private List<Path> children;
 	
-	private List<Content> contents;
+	private List<ContentModel> contents;
 
 	@NotBlank
 	public String getPath() {
@@ -48,11 +48,11 @@ public class Path extends IdEntity {
 	}
 
 	@OneToMany(mappedBy = "id")
-	public List<Content> getContents() {
+	public List<ContentModel> getContents() {
 		return contents;
 	}
 
-	public void setContents(List<Content> contents) {
+	public void setContents(List<ContentModel> contents) {
 		this.contents = contents;
 	}
 

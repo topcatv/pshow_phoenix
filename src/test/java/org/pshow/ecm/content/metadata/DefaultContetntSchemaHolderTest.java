@@ -18,22 +18,15 @@ package org.pshow.ecm.content.metadata;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.pshow.ecm.content.model.definition.DataType;
-import org.pshow.ecm.content.model.definition.PSModel;
-import org.pshow.ecm.content.model.definition.PropertyModel;
+import org.pshow.ecm.content.model.definition.FacetModel;
 import org.pshow.ecm.content.model.definition.TypeModel;
-import org.pshow.ecm.utils.XmlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringContextTestCase;
 
@@ -44,8 +37,6 @@ import org.springside.modules.test.spring.SpringContextTestCase;
 @ContextConfiguration(locations = { "/applicationContext.xml" })
 public class DefaultContetntSchemaHolderTest extends SpringContextTestCase {
 
-	@Autowired
-	@Qualifier("contentSchemaHolder")
 	private ContentSchemaHolder csh;
 
 	/**
@@ -53,32 +44,7 @@ public class DefaultContetntSchemaHolderTest extends SpringContextTestCase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
-	}
-	
-	public static void main(String[] args) throws IOException {
-		ClassPathResource classPathResource = new ClassPathResource("test.xml");
-		File file = classPathResource.getFile();
-		PSModel psmodel = getTestModel();
-		XmlUtil.toXMLFile(psmodel, file);
-	}
 
-	private static PSModel getTestModel() {
-		PSModel psModel = new PSModel();
-		psModel.setAuthor("Roy");
-		psModel.setName("Test");
-		psModel.setDescription("None");
-		psModel.createNamespace("http://pshow.org", "ps");
-		DataType int_type = psModel.createPropertyType("ps:int");
-		int_type.setJavaClassName("java.lang.Integer");
-		TypeModel type = psModel.createType("ps:base");
-		List<PropertyModel> properties = new ArrayList<PropertyModel>();
-		PropertyModel pm = new PropertyModel();
-		properties.add(pm);
-		pm.setName("name");
-		pm.setDataTypeName(int_type.getName());
-		type.setProperties(properties);
-		return psModel;
 	}
 
 	/**
@@ -93,6 +59,15 @@ public class DefaultContetntSchemaHolderTest extends SpringContextTestCase {
 		List<TypeModel> type = csh.getAllContentType();
 		assertNotNull(type);
 		assertTrue(type.size() > 0);
+		List<FacetModel> facet = csh.getAllFacet();
+		assertNotNull(facet);
+		assertTrue(facet.size() > 0);
+	}
+
+	@Autowired
+	@Qualifier("contentSchemaHolder")
+	public void setCsh(ContentSchemaHolder csh) {
+		this.csh = csh;
 	}
 
 }

@@ -60,11 +60,8 @@ public class DefaultContetntSchemaHolder implements ContentSchemaHolder {
 
 	private static final String ALL_TYPE = "ps:all_type";
 
-	@Autowired
-	@Qualifier("memoryStore")
 	private Store<QName, Object> store;
 
-	@Autowired
 	private NamespaceDao namespaceDao;
 
 	/*
@@ -451,10 +448,6 @@ public class DefaultContetntSchemaHolder implements ContentSchemaHolder {
 		return false;
 	}
 
-	public void setStore(Store<QName, Object> store) {
-		this.store = store;
-	}
-
 	@Override
 	public PSNamespace getNamespaceByPrefix(String prefix) {
 		BiMap<String, String> namespaces = getRegisteredObject(
@@ -464,6 +457,17 @@ public class DefaultContetntSchemaHolder implements ContentSchemaHolder {
 			return new PSNamespace(uri, prefix);
 		}
 		return null;
+	}
+
+	@Autowired
+	@Qualifier("memoryStore")
+	public void setStore(Store<QName, Object> store) {
+		this.store = store;
+	}
+
+	@Autowired
+	public void setNamespaceDao(NamespaceDao namespaceDao) {
+		this.namespaceDao = namespaceDao;
 	}
 
 }

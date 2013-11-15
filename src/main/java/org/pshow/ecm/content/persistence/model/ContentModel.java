@@ -12,12 +12,13 @@ import org.pshow.ecm.entity.IdEntity;
 
 @Entity
 @Table(name = "ps_content")
-public class Content extends IdEntity {
+public class ContentModel extends IdEntity {
 	private String uuid;
 	private String name;
 	private boolean checkouted;
 	private boolean folder;
 	private boolean versioned;
+	private String contentType;
 	
 	private List<Property> properties;
 	
@@ -81,5 +82,13 @@ public class Content extends IdEntity {
 
 	public void setVersionHistory(VersionHistory versionHistory) {
 		this.versionHistory = versionHistory;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 }

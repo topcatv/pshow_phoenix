@@ -1,25 +1,25 @@
 package org.pshow.ecm.content.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public interface PropertyValue {
 	public Serializable getValue();
 
-	public int getInt();
+	public Integer getIntValue();
 
-	public long getLong();
+	public Long getLongValue();
 
-	public float getFloat();
+	public Float getFloatValue();
 
-	public double getDouble();
+	public Double getDoubleValue();
 
-	public Date getDate();
+	public Date getDateValue();
 
-	public String getString();
+	public String getStringValue();
 
-	public boolean getBoolean();
+	public Boolean getBooleanValue();
 
-	public Collection getValues();
+	public List<Serializable> getValues();
 }
